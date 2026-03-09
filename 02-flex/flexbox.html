@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox — Layouts Reales</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <!-- LAYOUT 1: Navbar profesional -->
+    <header class="navbar">
+        <div class="navbar-logo">
+            <span>⚡</span>
+            <strong>DevPortafolio</strong>
+        </div>
+        <nav class="navbar-links">
+            <a href="#">Inicio</a>
+            <a href="#">Proyectos</a>
+            <a href="#">Blog</a>
+            <a href="#">Contacto</a>
+        </nav>
+        <div class="navbar-acciones">
+            <button class="btn-outline">Iniciar Sesión</button>
+            <button class="btn-solid">Registrarse</button>
+        </div>
+    </header>
+
+    <main class="pagina">
+        <!-- LAYOUT 2: Hero centrado -->
+        <section class="hero">
+            <h1>Construyo productos <span>digitales</span> que importan</h1>
+            <p>Full Stack Developer especializado en React y Node.js.</p>
+            <div class="hero-botones">
+                <a href="" class="btn-solid">Ver proyectos</a>
+                <a href="" class="btn-outline-dark">Descargar</a>
+            </div>
+        </section>
+
+        <!-- LAYOUT 3: Grid de tarjetas -->
+        <section class="seccion">
+            <h2>Proyectos Destacados</h2>
+            <div class="tarjetas">
+                <article class="tarjeta">
+                    <div class="tarjeta-icono">🛒</div>
+                    <div class="tarjeta-cuerpo">
+                        <h3>E-commerce App</h3>
+                        <p>Tienda online con carrito, pagos y panel de administración.</p>
+                    </div>
+                    <div class="tarjeta-footer">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <a href="#">Ver →</a>
+                    </div>
+                </article>
+
+                <article class="tarjeta tarjeta-destacada">
+                    <div class="tarjeta-icono">📊</div>
+                    <div class="tarjeta-cuerpo">
+                        <h3>Dashboard Analytics</h3>
+                        <p>Panel de métricas en tiempo real con gráficas interactivas.</p>
+                    </div>
+                    <div class="tarjeta-footer">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">PostgreSQL</span>
+                        <a href="#">Ver →</a>
+                    </div>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="tarjeta-icono">💬</div>
+                    <div class="tarjeta-cuerpo">
+                        <h3>Chat en tiempo real</h3>
+                        <p>Aplicación de mensajería con WebSockets y salas privadas.</p>
+                    </div>
+                    <div class="tarjeta-footer">
+                        <span class="tag">Socket.io</span>
+                        <span class="tag">React</span>
+                        <a href="#">Ver →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- LAYOUT 4: Sidebar + Contenido -->
+        <section class="seccion">
+            <h2>Sobre mí</h2>
+            <div class="layout-sidebar">
+
+                <aside class="sidebar">
+                    <img src="https://avatars.githubusercontent.com/u/9919?s=200" alt="Foto de perfil" />
+                    <h3>Mario Munera</h3>
+                    <p>Full Stack Developer</p>
+                    <p>📍 Medellin, Colombia</p>
+                    <p>🟢 Disponible</p>
+                </aside>
+
+                <div class="contenido-principal">
+                    <h3>Mi historia</h3>
+                    <p>
+                        Empecé en el mundo del desarrollo web con HTML y CSS,
+                        y nunca paré. Hoy construyo aplicaciones completas
+                        desde la base de datos hasta la interfaz.
+                    </p>
+                    <h3>Lo que hago</h3>
+                    <div class="habilidades">
+                        <div class="habilidad">
+                            <span>HTML & CSS</span>
+                            <div class="barra">
+                                <div class="barra-relleno" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="habilidad">
+                            <span>JavaScript</span>
+                            <div class="barra">
+                                <div class="barra-relleno" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="habilidad">
+                            <span>React</span>
+                            <div class="barra">
+                                <div class="barra-relleno" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="habilidad">
+                            <span>Node.js</span>
+                            <div class="barra">
+                                <div class="barra-relleno" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 Mario Munera</p>
+        <div class="footer-links">
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>Hecho con HTML + CSS 💚</p>
+    </footer>
+
+</body>
+
+</html>

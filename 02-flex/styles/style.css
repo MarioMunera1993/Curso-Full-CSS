@@ -1,0 +1,382 @@
+/* ── RESET ─────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+/* ── BOTONES ───────────────────────────────── */
+.btn-solid {
+  background: #00ffb2;
+  color: #0f172a;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.btn-solid:hover {
+  background: #00e5a0;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #1e293b;
+  border: 2px solid #cbd5e1;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  border-color: #00ffb2;
+  color: #00ffb2;
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: #1e293b;
+  border: 2px solid #cbd5e1;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.btn-outline-dark:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+}
+
+/* ── LAYOUT 1: NAVBAR ──────────────────────── */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* logo | links | botones */
+  align-items: center; /* centrado vertical */
+  padding: 0 40px;
+  height: 68px;
+  background: #0f172a;
+  border-bottom: 1px solid #1e293b;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 1.1rem;
+}
+.navbar-logo span {
+  font-size: 1.4rem;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 32px;
+}
+
+.navbar-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navbar-links a:hover {
+  color: #00ffb2;
+}
+
+.navbar-acciones {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ── PÁGINA GENERAL ────────────────────────── */
+.pagina {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.seccion {
+  padding: 80px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.seccion h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 40px;
+}
+
+/* ── LAYOUT 2: HERO CENTRADO ───────────────── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 24px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 0;
+}
+
+.hero h1 {
+  color: white;
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  max-width: 700px;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero h1 span {
+  color: #00ffb2;
+}
+
+.hero p {
+  color: #94a3b8;
+  font-size: 1.2rem;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.hero-botones {
+  display: flex; /* botones en fila */
+  gap: 16px;
+  align-items: center;
+}
+
+/* ── LAYOUT 3: TARJETAS ────────────────────── */
+.tarjetas {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* saltan de línea si no caben */
+}
+
+.tarjeta {
+  flex: 1; /* cada tarjeta crece por igual */
+  min-width: 280px; /* mínimo antes de saltar de línea */
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column; /* icono → cuerpo → footer en columna */
+  gap: 16px;
+  transition: all 0.2s;
+}
+
+.tarjeta:hover {
+  border-color: #6366f1;
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.12);
+  transform: translateY(-4px);
+}
+
+.tarjeta-destacada {
+  border-color: #00ffb2;
+  border-width: 2px;
+}
+
+.tarjeta-icono {
+  font-size: 2.5rem;
+}
+
+.tarjeta-cuerpo {
+  flex: 1; /* empuja el footer hacia abajo */
+}
+
+.tarjeta-cuerpo h3 {
+  font-size: 1.1rem;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.tarjeta-cuerpo p {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.tarjeta-footer {
+  display: flex; /* tags en fila */
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tarjeta-footer a {
+  margin-left: auto; /* empuja el enlace a la derecha */
+  color: #6366f1;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.tarjeta-footer a:hover {
+  color: #00ffb2;
+}
+
+.tag {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+}
+
+
+/* ── LAYOUT 4: SIDEBAR + CONTENIDO ────────── */
+.layout-sidebar{
+    display: flex;
+    gap: 48px;
+    align-items: flex-start; /* no se estiran al mismo alto */
+}
+
+.sidebar{
+    flex: 0 0 240px; /* ancho fijo, no crece ni encoge */
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.sidebar img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #00FFB2;
+    margin-bottom: 8px;
+}
+
+.sidebar h3 {
+  font-size: 1.1rem;
+  color: #0F172A;
+}
+
+.sidebar p {
+  font-size: 0.875rem;
+  color: #64748B;
+  margin: 0;
+}
+
+.contenido-principal{
+    flex: 1; /* toma todo el espacio restante */
+}
+
+.contenido-principal h3 {
+  font-size: 1.2rem;
+  color: #0F172A;
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+
+
+.contenido-principal h3:first-child{
+    margin-top: 0;
+}
+
+.contenido-principal p {
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+.habilidades{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.habilidad {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.habilidad span {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.barra{
+    height: 8px;
+    background: #E2E8F0;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.barra-relleno{
+    height: 100%;
+    background: linear-gradient(90deg, #6366F1, #00FFB2);
+    border-radius: 999px;
+    transition: width 0.6s ease;
+}
+
+/* ── FOOTER ────────────────────────────────── */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  background: #0F172A;
+  border-top: 1px solid #1E293B;
+  margin-top: 40px;
+}
+
+.footer p {
+  color: #475569;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  color: #64748B;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #00FFB2;
+}
