@@ -305,10 +305,9 @@ Antes de Flexbox, hacer layouts en CSS era un dolor. Centrar algo verticalmente 
 ## 🧠 El concepto base: contenedor e hijos
 
 ┌─────────────────────────────────────────┐
-│         FLEX CONTAINER (padre)                                                                    │
-│  ┌───────┐  ┌───────┐  ┌───────┐                                    │
-│  │       hijo1      │  │      hijo2      │  │ hijo3           │                                    │
-│  └───────┘  └───────┘  └───────┘                                    │
+│       FLEXCONTAINER (padre)             │
+│┌───────┐  ┌───────┐┌───────┐            |                      │| hijo1 │  │ hijo2 ││ hijo3 |            | 
+│└───────┘  └───────┘└───────┘            │
 └─────────────────────────────────────────┘
 
 - El **padre** recibe `display: flex` → se convierte en flex container
@@ -516,3 +515,214 @@ Crea `flexbox.html` y `flexbox.css`. Vamos a construir **4 layouts** que usarás
 - Hero centrado perfectamente
 - Tarjetas flexibles con footer pegado abajo
 - Sidebar fijo + contenido flexible
+
+## ¿Qué es CSS Grid y en qué se diferencia de Flexbox?
+
+|  | Flexbox | CSS Grid |
+| --- | --- | --- |
+| **Dimensiones** | 1D — fila **o** columna | 2D — filas **y** columnas |
+| **Ideal para** | Componentes pequeños, navbars, tarjetas | Layouts de página completos |
+| **Control** | En los hijos | En el padre |
+| **Analogía** | Una fila de estantes | Un tablero de ajedrez |
+
+### 💡 **No son competencia — se usan juntos.** Grid para el layout general de la página, Flexbox para los componentes dentro.
+
+## 🧠 Vocabulario de Grid
+
+```markdown
+				col 1     col 2     col 3
+       ┌─────────┬─────────┬─────────┐
+fila 1 │  celda  │  celda  │  celda  │
+       ├─────────┼─────────┼─────────┤
+fila 2 │  celda  │  celda  │  celda  │
+       ├─────────┼─────────┼─────────┤
+fila 3 │  celda  │  celda  │  celda  │
+       └─────────┴─────────┴─────────┘
+
+│←────────────── track ──────────────→│
+         ↑
+       línea de grid (grid line)
+```
+
+- **Container** — el padre con `display: grid`
+- **Item** — cada hijo directo del container
+- **Track** — una fila o columna completa
+- **Cell** — intersección de una fila y columna
+- **Area** — grupo de celdas rectangulares
+- **Line** — las líneas que dividen el grid (se numeran desde 1)
+
+## PROPIEDADES DEL PADRE (grid container)
+
+`display: grid` — Activar Grid
+
+```css
+.container {
+  display: grid;
+}
+```
+
+`grid-template-columns` — Definir columnas
+
+```css
+.container {
+  display: grid;
+
+  /* 3 columnas de ancho fijo */
+  grid-template-columns: 200px 200px 200px;
+
+  /* 3 columnas iguales con fr (fracción del espacio disponible) */
+  grid-template-columns: 1fr 1fr 1fr;
+
+  /* Shorthand con repeat() */
+  grid-template-columns: repeat(3, 1fr);
+
+  /* Columnas de distinto tamaño */
+  grid-template-columns: 280px 1fr;       /* sidebar + contenido */
+  grid-template-columns: 1fr 2fr 1fr;     /* lateral | central doble | lateral */
+
+  /* Mezcla de unidades */
+  grid-template-columns: 200px 1fr 100px;
+
+  /* minmax: mínimo y máximo de cada columna */
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+
+  /* auto-fill: crea tantas columnas como quepan */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+  /* auto-fit: igual pero colapsa columnas vacías */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+```
+
+`grid-template-rows` — Definir filas
+
+```css
+.container {
+  display: grid;
+
+  /* 3 filas de alto fijo */
+  grid-template-rows: 80px 1fr 60px;
+
+  /* Header | contenido flexible | footer */
+  grid-template-rows: auto 1fr auto;
+}
+```
+
+`gap` — Espacio entre celdas
+
+```css
+.container {
+  display: grid;
+
+  gap: 24px;              /* mismo espacio en filas y columnas */
+  gap: 16px 24px;         /* row-gap  column-gap */
+  row-gap: 16px;
+  column-gap: 24px;
+}
+```
+
+## `grid-template-areas` — Layout con nombres 🌟
+
+Esta es la propiedad más poderosa y visual de Grid:
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: 70px 1fr 60px;
+  grid-template-areas:
+    "header  header"
+    "sidebar contenido"
+    "footer  footer";
+  min-height: 100vh;
+}
+
+/* Asignar cada hijo a su área */
+.header   { grid-area: header; }
+.sidebar  { grid-area: sidebar; }
+.contenido { grid-area: contenido; }
+.footer   { grid-area: footer; }
+
+┌─────────────────────────────┐
+│           header            │
+├──────────┬──────────────────┤
+│  sidebar │    contenido     │
+├──────────┴──────────────────┤
+│           footer            │
+└─────────────────────────────┘
+```
+
+💡 El `.` en `grid-template-areas` representa una celda vacía:
+
+```css
+grid-template-areas:
+  "header header"
+  ".      contenido"
+  "footer footer";
+```
+
+## PROPIEDADES DE LOS HIJOS (grid items)
+
+`grid-column` y `grid-row` — Posición y tamaño
+
+```css
+/* Las líneas se numeran desde 1 */
+
+/*
+  líneas: 1   2   3   4
+          │   │   │   │
+fila 1:   ┼───┼───┼───┤
+fila 2:   ┼───┼───┼───┤
+fila 3:   ┼───┼───┼───┤
+          │   │   │   │
+*/
+
+.item {
+  /* grid-column: línea-inicio / línea-fin */
+  grid-column: 1 / 3;   /* ocupa desde línea 1 hasta línea 3 (2 columnas) */
+  grid-column: 1 / -1;  /* desde el inicio hasta el final (todas las columnas) */
+  grid-column: 2 / 4;   /* ocupa columnas 2 y 3 */
+
+  /* span: cuántas columnas ocupa (más legible) */
+  grid-column: span 2;  /* ocupa 2 columnas desde donde esté */
+  grid-column: span 3;  /* ocupa 3 columnas */
+
+  /* Lo mismo para filas */
+  grid-row: 1 / 3;      /* ocupa 2 filas */
+  grid-row: span 2;
+}
+```
+
+`place-self` — Alineación individual
+
+```css
+.item {
+  justify-self: start | end | center | stretch;  /* horizontal */
+  align-self:   start | end | center | stretch;  /* vertical */
+  place-self: center center; /* shorthand: align justify */
+}
+```
+
+## ✅ Lo que aprendiste en esta lección
+
+**En el padre:**
+
+- `display: grid` — activa Grid
+- `grid-template-columns` — define columnas con `fr`, `px`, `repeat()`
+- `grid-template-rows` — define filas
+- `grid-template-areas` — layout visual con nombres
+- `gap` — espacio entre celdas
+- `auto-fit` + `minmax()` — responsive sin media queries
+
+**En los hijos:**
+
+- `grid-area` — asigna el hijo a un área nombrada
+- `grid-column: span N` — cuántas columnas ocupa
+- `grid-row: span N` — cuántas filas ocupa
+
+**Layouts reales construidos:**
+
+- Layout clásico de página completa
+- Galería con items de distintos tamaños
+- Tarjetas auto-responsivas sin media queries
+- Dashboard completo con métricas, gráfica y tabla
